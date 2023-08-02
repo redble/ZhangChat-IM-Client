@@ -9,7 +9,7 @@ function localStorageGet(key) {
 }
 
 function localStorageSet(key, val) {
-    console.log('local set', 'key', key, 'value', val);
+   // console.log('local set', 'key', key, 'value', val);
     try {
         window.localStorage[key] = val;
     } catch (e) {
@@ -92,9 +92,9 @@ var markdownOptions = {
         if (!markdownOptions.doHighlight || !window.hljs) {
             return '';
         }
-        console.log('hightlight work');
+        //console.log('hightlight work');
         if (lang && hljs.getLanguage(lang)) {
-            console.log('hightlight work2');
+           // console.log('hightlight work2');
             try {
                 return hljs.highlight(lang, str).value;
             } catch (__) {
@@ -155,7 +155,7 @@ function verifyLink(link) {
 
     if (linkHref !== link.innerHTML)
         createWeuiDialog(`等一下！`, `你即将前往：${linkHref}`, (e) => {
-            console.log(e);
+           // console.log(e);
             if (e)
                 openNewLink(link);
         });
@@ -282,7 +282,7 @@ modAction.forEach((action) => {
     $('#mod-action').appendChild(option)
 });
 $('#prefix-selector').onchange = function (e) {
-    console.log('set prefix');
+    //console.log('set prefix');
     setPrefix(e.target.value);
 }
 $('#highlight-selector').onchange = function (e) {
@@ -290,7 +290,7 @@ $('#highlight-selector').onchange = function (e) {
 
 }
 $('#scheme-selector').onchange = function (e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     setScheme(e.target.value);
 }
 $('#mod-action').onchange = (e) => {
@@ -374,7 +374,7 @@ window.onload = function () {
         {
             id: 'parse-latex',
             onchange: ['self', (e) => {
-                console.log(e);
+               // console.log(e);
                 if (!!e.target.checked) {
                     md.inline.ruler.enable(['katex']);
                     md.block.ruler.enable(['katex']);
@@ -451,7 +451,7 @@ window.onload = function () {
         if (e.onchange == 'self') {
             $('#' + e.id).onchange = (j) => {
                 localStorageSet(e.id, !!j.target.checked);
-                console.log('onchage');
+               // console.log('onchage');
             }
         } else if (e.onchange.constructor == Array && e.onchange[0] == 'self') {
             $('#' + e.id).onchange = (j) => {
@@ -1205,9 +1205,9 @@ function pushHtml(html) {
     centerDiv.className = 'center';
     centerDiv.innerHTML = html;
     var atBottom = isAtBottom();
-    console.log(html, atBottom);
+   // console.log(html, atBottom);
     $('#messages').appendChild(centerDiv);
-    console.log(document.body.scrollHeight);
+   // console.log(document.body.scrollHeight);
     if (atBottom) {
         window.scrollTo(0, document.body.scrollHeight);
     }
@@ -1637,7 +1637,7 @@ function join(channel) {
 function pushChat(args) {
     pushMessage(args.nick == _nick, args.head == 'imgs/head.png' ? 'css/img/head.png' : args.head,
         args.nick, args.trip, args.text, args, currentPrefix, args.color);
-    console.log(args);
+   // console.log(args);
 }
 $('#set-video').onclick = function () {
     createCustomPrompt('请输入视频文件地址', '(留空则清除公共视频)', (e, t) => {

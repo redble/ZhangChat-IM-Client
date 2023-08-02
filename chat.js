@@ -159,6 +159,7 @@ function verifyLink(link) {
             if (e)
                 openNewLink(link);
         });
+    else return true;
 
 
     return false;

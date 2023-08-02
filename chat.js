@@ -336,13 +336,13 @@ window.onload = function () {
         },
         {
             id: 'auto-login',
-            onchange: ['self', (e) => window.autoLogin = e],
+            onchange: ['self', (e) => window.autoLogin = !!e.target.checked],
             check: true,
             init: () => window.autoLogin = true
         },
         {
             id: 'sound-switch',
-            onchange: ['self', (e) => window.sound_sw = e],
+            onchange: ['self', (e) => window.sound_sw = !!e.target.checked],
             check: true,
             init: () => window.sound_sw = true
         },/*
@@ -393,43 +393,43 @@ window.onload = function () {
         },
         {
             id: 'joined-left',
-            onchange: ['self', (e) => window.join_sw = e],
+            onchange: ['self', (e) => window.join_sw = !!e.target.checked],
             check: true,
             init: () => window.join_sw = true
         },
         {
             id: 'show-head',
-            onchange: ['self', (e) => window.head_sw = e],
+            onchange: ['self', (e) => window.head_sw = !!e.target.checked],
             check: true,
             init: () => window.head_sw = true
         },
         {
             id: 'allow-imgur',
-            onchange: ['self', (e) => window.img_sw = e],
+            onchange: ['self', (e) => window.img_sw = !!e.target.checked],
             check: true,
             init: () => window.img_sw = true
         },
         {
             id: 'fun-system',
-            onchange: ['self', (e) => window.funsys_sw = e],
+            onchange: ['self', (e) => window.funsys_sw = !!e.target.checked],
             check: true,
             init: () => window.funsys_sw = true
         },
         {
             id: 'rainbow-nick',
-            onchange: ['self', (e) => window.rainbow_sw = e],
+            onchange: ['self', (e) => window.rainbow_sw = !!e.target.checked],
             check: true,
             init: () => window.rainbow_sw = true
         },
         {
             id: 'allow-html',
-            onchange: ['self', (e) => window.html_sw = e],
+            onchange: ['self', (e) => window.html_sw = !!e.target.checked],
             check: true,
             init: () => window.html_sw = true
         },
         {
             id: 'allow-audio',
-            onchange: ['self', (e) => window.audio_sw = e],
+            onchange: ['self', (e) => window.audio_sw = !!e.target.checked],
             init: () => window.audio_sw = true
         }
     ];
@@ -1752,7 +1752,7 @@ var COMMANDS = {
         if (!window.html_sw) {
             return pushWarn(`您收到了一条来自 ${args.nick} 的 HTML信息，但是由于您不允许显示HTML信息，因此我们屏蔽了它`);
         }
-        pushMessage(args.nick == getNick(), args.head == 'imgs/head.png' ? 'css/img/head.png' : args.head, args.nick, args.trip, args.text, args, currentPrefix, args.color, true);
+        pushMessage(args.nick == getNick(), getHead(args.head), args.nick, args.trip, args.text, args, currentPrefix, args.color, true);
 
     },
     captcha: args => {

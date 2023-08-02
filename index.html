@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="css/img/favicon.ico" type="image/x-icon">
+  <title>ZhangChat-IM模式客户端</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <link rel="stylesheet" href="css/weui.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chatbox.css">
+  <link id="scheme-link" rel="stylesheet" href="css/light.css">
+  <link id="highlight-link" rel="stylesheet" href="vendor/hljs/styles/darcula.min.css">
+  <!-- <link rel="stylesheet" href="css/weui.min.css"> -->
+  <script src="js/md.js"></script>
+  <script  src="vendor/hljs/highlight.min.js"></script>
+  <script src="vendor/remarkable-katex/remarkableKatex.min.js"></script>
+  <script src="vendor/katex/katex.min.js"></script>
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <!-- <script src="js/weui.min.js"></script> -->
+
+</head>
+
+
+<body class="body_color" style="margin-bottom: 80px;">
+  
+  <article class="container">
+    <div id="messages" class="cmessages">
+     
+    </div>
+  </article>
+  <footer id="footer">
+    <div class="container">
+      <div class="chatflexinput">
+        <div class="weui-cells weui-cells_form chatinput inputchat textinput_color">
+          <div class="weui-cell weui-cell_active">
+            <div class="weui-cell__bd flex2">
+              <textarea class="weui-textarea" placeholder="输入文本" rows="3" id="chatinput"></textarea>
+              <div role="option" aria-live="polite" class="weui-textarea-counter"><span id="text_count">0</span>/7000</div>
+            </div>
+          </div>
+        </div>
+        <button class="weui-btn weui-btn_primary weui-wa-hotarea sendbtn btn_color" style="display: none;"  id="sendbtn">发送</button>
+      </div>
+    </div>
+  </footer>
+  <nav id="sidebar" class="sidebar  sidebar_color sidebar_border_color">
+    <div id="sidebar-content" class="hidden">
+      <span class="nav_title">设置</span>
+      <hr>
+      <div class="weui-cells weui-cells_checkbox">
+        <label class="weui-cell weui-cell_active weui-check__label" for="auto-login">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="auto-login">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">自动登录</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="pin-sidebar">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="pin-sidebar">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">固定侧边栏</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="sound-switch">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="sound-switch">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">声音提醒</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="notify-switch">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="notify-switch">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">桌面通知</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="parse-latex" >
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="parse-latex" >
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">启用数学公式</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="syntax-highlight">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="syntax-highlight">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">代码高亮</div>
+        </label>
+         <!-- 分割线 -->
+         <label class="weui-cell weui-cell_active weui-check__label" for="show-sendbtn">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="show-sendbtn">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">显示发送按钮</div>
+        </label>
+      </div>
+      <hr>
+      <span class="nav_title">更多</span>
+      <div class="weui-cells weui-cells_checkbox">
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="joined-left">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="joined-left">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">显示 加入/离开</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="show-head">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="show-head">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">显示头像</div>
+        </label>
+        <!-- 分割线 -->
+        <label class="weui-cell weui-cell_active weui-check__label" for="allow-imgur">
+          <div class="weui-cell__hd">
+            <input type="checkbox" class="weui-check "  id="allow-imgur">
+            <i class="weui-icon-checked"></i>
+          </div>
+          <div class="weui-cell__bd">显示图片</div>
+        </label>
+      </div>
+      <hr>
+      <span class="nav_title">实验室</h4>
+        <div class="weui-cells weui-cells_checkbox">
+          <!-- 分割线 -->
+          <label class="weui-cell weui-cell_active weui-check__label" for="fun-system">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check "  id="fun-system">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">有趣的系统</div>
+          </label>
+          <!-- 分割线 -->
+          <label class="weui-cell weui-cell_active weui-check__label" for="rainbow-nick">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check "  id="rainbow-nick">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">彩虹昵称</div>
+          </label>
+          <!-- 分割线 -->
+          <label class="weui-cell weui-cell_active weui-check__label" for="allow-html">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check "  id="allow-html">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">显示HTML信息</div>
+          </label>
+          <!-- 分割线 -->
+          <label class="weui-cell weui-cell_active weui-check__label" for="allow-audio">
+            <div class="weui-cell__hd">
+              <input type="checkbox" class="weui-check "  id="allow-audio">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">显示音频信息</div>
+          </label>
+        </div>
+        <p>
+          <span class="nav_small">管理员操作：</span>
+          <select id="mod-action"></select>
+        </p>
+        <hr>
+        <p>
+          <span>颜色主题</span>
+          <select id="scheme-selector" class="font">
+           
+          </select>
+        </p>
+        <p>
+          <span>高光样式</span>
+          <select id="highlight-selector"></select>
+        </p>
+        <p>
+          <span>等级标识</span>
+          <select id="prefix-selector"></select>
+        </p>
+        <hr>
+        <p>
+          <button id="set-head" class="weui-btn weui-btn_mini weui-wa-hotarea">设置头像</button>
+        </p>
+        <hr>
+        <p>
+          <button id="set-video" class="weui-btn weui-btn_mini weui-wa-hotarea">设置公共视频</button>
+        </p>
+        <p>
+          <button id="get-video" class="weui-btn weui-btn_mini weui-wa-hotarea">一起看视频</button>
+        </p>
+        <hr>
+        <p>
+          <button id="clear-messages" class="weui-btn weui-btn_mini weui-wa-hotarea">清除本页聊天内容</button>
+        </p>
+        <hr>
+        <p>在线用户</p>
+        <span style="font-size: 12px;">
+          （左键单击可邀请到新房间）<br>
+          （右键单击可执行管理员操作）
+        </span>
+        <ul id="users"></ul>
+    </div>
+  </nav>
+
+  <script src="chat.js"></script>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</body>
+
+</html>

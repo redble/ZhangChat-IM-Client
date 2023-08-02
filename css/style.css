@@ -1,0 +1,166 @@
+mark {
+	background-color: #FFEB3B;
+	color: black;
+}
+
+pre {
+	display: block;
+	padding: 5px;
+	margin: 0 0 2px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #b3b3b3;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #232222;
+	border: 1px solid #424242;
+	border-radius: 4px;
+}
+
+pre code {
+	display: inline-block;
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #FFFFFF;
+	background-color: #232222;
+	border-radius: 4px;
+	white-space: break-spaces;
+	font-family: 'HYWenHei 85W';
+}
+
+code {
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #FFFFFF;
+	background-color: #232222;
+	border-radius: 4px;
+	border: 1px solid #424242;
+	
+	font-family: 'HYWenHei 85W';
+}
+
+
+
+table {
+	background-color: transparent;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+table>caption+thead>tr:first-child>th,
+table>colgroup+thead>tr:first-child>th,
+table>thead:first-child>tr:first-child>th,
+table>caption+thead>tr:first-child>td,
+table>colgroup+thead>tr:first-child>td,
+table>thead:first-child>tr:first-child>td {
+	border-top: 0;
+}
+
+table>thead>tr>th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #4e4e4e;
+}
+
+table>thead>tr>th,
+table>tbody>tr>th,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>tbody>tr>td,
+table>tfoot>tr>td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #4e4e4e;
+}
+
+th {
+	text-align: left;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+table>tbody>tr:nth-child(odd)>td,
+table>tbody>tr:nth-child(odd)>th {
+	background-color: #4e4e4e;
+}
+
+table>thead>tr>th,
+table>tbody>tr>th,
+table>tfoot>tr>th,
+table>thead>tr>td,
+table>tbody>tr>td,
+table>tfoot>tr>td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #4e4e4e;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+#sidebar-content ul {
+	padding-inline-start: 20px;
+}
+
+#sidebar-content ul li {
+	list-style: disc outside none;
+}
+
+ul,
+ol {
+	margin-top: 0;
+	margin-bottom: 10px;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+}
+
+.usertrip {
+	margin: 5px;
+	font-size: 70%;
+}
+
+ul li {
+	list-style: inside;
+}
+
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+}
+
+ul ul,
+ol ol {
+	padding-left: 2em;
+}
+
+ul a {
+	font-size: 70%;
+}
+
+* {
+	font-weight: normal;
+}
+
+strong,
+b {
+	font-weight: normal;
+}
+
+video {
+	height: 400px;
+}

@@ -1,0 +1,547 @@
+@font-face {
+  font-family: 'HYWenHei 85W';
+  /* 字体名称 */
+  src: url("font/hk4e_zh-cn.woff") format("woff"),
+    url('https://1145.s3.bitiful.net/font/hk4e_zh-cn.woff') format('woff');
+
+  /* 可以添加更多字体文件及其格式，以提供兼容性支持 */
+}
+
+/*
+@font-face {
+  font-family: 'HarmonyOS Sans SC';
+  src: url('/font/HarmonyOS_Sans_SC_Black.woff') format("woff");
+}
+*/
+:root {
+  color-scheme: dark !important;
+}
+
+body {
+  /* font-family: -apple-system; */
+  font-family: "HYWenHei 85W", "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  /* text-shadow: 0 0px 4px rgba(0, 0, 0, 0.5); */
+}
+
+button {
+  font-family: "HYWenHei 85W";
+  background: #009688;
+}
+
+.font {
+  font-family: "HYWenHei 85W";
+}
+
+.fontnone {
+  font-weight: normal;
+}
+
+.weui-prompt {
+  overflow: hidden;
+  margin-left: 24px;
+  margin-right: 24px;
+  border-bottom: solid 5px rgba(255, 255, 255, 0.1);
+}
+
+p {
+  /* color: white; */
+  margin: 5px;
+}
+
+.nav_title {
+  font-size: 18px;
+  margin: 1em;
+}
+
+label {
+  vertical-align: 2px;
+}
+
+a {
+  color: palevioletred;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  border-top: solid 1px rgba(255, 255, 255, 0.1);
+  margin: 0.8em 0em;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.center {
+  clear: both;
+  float: left;
+  display: inline-flex;
+  width: 100%;
+  /* margin: 5px; */
+  justify-content: center;
+}
+
+/*****************************************************************************************************************/
+.chat-sender {
+  clear: both;
+  /* font-size: 120%; */
+  width: fit-content;
+  height: fit-content;
+  float: left;
+  margin: 5px;
+  max-width: 90%;
+  /* font-family: 'HarmonyOS Sans SC'; */
+}
+
+.chat-sender p {
+  color: black;
+  margin: 0;
+  word-break: break-all;
+}
+
+.chat-sender .img {
+  float: left;
+  margin: 0px;
+}
+
+.chat-sender .handle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chat-sender .nick {
+  margin: 0
+    /* 50px 2px 50px*/
+  ;
+  padding: 0px;
+  color: #848484;
+  font-size: 70%;
+  text-align: left;
+}
+
+.chat-sender .bubble {
+  /* display: inline; */
+  background-color: #ebebeb;
+  /* float: left; */
+  margin: 2px
+    /*50px 10px 50px*/
+  ;
+  padding: 10px;
+  border-radius: 7px;
+  width: fit-content;
+  color: black;
+}
+
+
+.chat-receiver .bubble li,
+.chat-sender .bubble li {
+  margin-left: 20px;
+
+}
+
+
+.chat-receiver {
+  clear: both;
+  /* font-size: 120%; */
+  width: fit-content;
+  height: fit-content;
+  float: right;
+  margin: 5px;
+  max-width: 90%;
+}
+
+.chat-receiver p {
+  color: black;
+  margin: 0;
+  word-break: break-all;
+}
+
+.chat-receiver .img {
+  float: right;
+  margin: 0px;
+}
+
+
+.chat-receiver .handle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-receiver .nick {
+  margin: 0px
+    /* 50px 2px 50px*/
+  ;
+  padding: 0px;
+  color: #848484;
+  font-size: 70%;
+  text-align: right;
+}
+
+.chat-receiver .bubble {
+
+  /* float: right; */
+  background-color: #b2e281;
+  margin: 2px;
+  padding: 10px;
+  border-radius: 7px;
+  width: fit-content;
+  color: black;
+}
+
+.chat-receiver .head,
+.chat-sender .head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chat-notice {
+  clear: both;
+  font-size: 70%;
+  /* text-align: center; */
+  /* margin-top: 15px; */
+  /* margin-bottom: 15px; */
+  display: flex;
+  justify-content: center;
+}
+
+.chat-notice span {
+  word-break: break-all;
+  display: inline-block;
+  line-height: 25px;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.chat-notice span p {
+  margin: 0;
+}
+
+/**********************************************************************************************************************************************/
+blockquote {
+  padding: 3px 10px;
+  margin: 3px;
+  border-left: 5px solid #4e4e4e;
+}
+
+.nav_small {
+  font-size: 15px;
+}
+
+nav .weui-cells:after,
+.weui-cell:after {
+  border: 0;
+  border-radius: 5px;
+}
+
+span.text {
+  max-width: 50%;
+  max-height: 800px;
+  margin-top: 10px;
+}
+
+nav .weui-cell {
+  padding: 9px;
+}
+
+nav .weui-cells:before,
+.weui-cell:before {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.expand {
+  height: 100%;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#chatform {
+  border-top: 1px solid;
+}
+
+#chatinput {
+  width: 100%;
+  box-sizing: border-box;
+  max-height: 400px;
+}
+
+.chatflexinput {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.cmessages {
+  padding-top: 2em;
+  /* margin-bottom: 48px; */
+  overflow: hidden;
+  padding-bottom: 15px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.sendbtn {
+  flex: 0.2;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 120%;
+
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1em;
+  overflow-y: auto;
+  color: white;
+}
+
+
+#sidebar-content {
+  width: 200px;
+  padding-bottom: 10%;
+
+}
+
+#sidebar-content .weui-cells {
+  background-color: transparent;
+}
+
+
+
+.message {
+  border-left: 1px solid rgba(116, 115, 105, 0.1);
+}
+
+.welcome_btn,
+.captcha {
+  margin: 5px;
+}
+
+/******************* level vars **********************************/
+
+.onlytext {}
+
+.none {}
+
+.block {
+
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+
+.mynick {
+  background: #282c34;
+  cursor: pointer;
+}
+
+.trip {
+  background: #333636;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.onlytext .bot {
+  background: #8e44ad;
+
+  &::after {
+    content: "Bot";
+  }
+}
+
+.onlytext .admin {
+  background: rgba(255, 0, 0, 0.5);
+
+  &::after {
+    content: "Admin";
+  }
+}
+
+.onlytext .mod {
+  background: #44FF0066;
+
+  &::after {
+    content: "Mod";
+  }
+}
+
+.onlytext .roomop {
+  background: orange;
+
+  &::after {
+    content: "RoomOP";
+  }
+}
+
+.onlytext .trust {
+  background: #11FFDD66;
+
+  &::after {
+    content: "Trust";
+  }
+}
+
+.onlytext .primary {
+  /* background: gray; */
+  display: none;
+}
+
+/****************************************************/
+.onlyemoji {}
+
+
+
+.onlyemoji .block {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-bottom: -7px;
+  padding: 2px;
+  margin-left: 5px;
+  /* background: #6699cc; */
+}
+
+.onlyemoji .primary {
+  display: none;
+}
+
+.onlyemoji .admin {
+  background-image: url('img/levels/admin.png');
+  background-size: cover;
+  margin-bottom: -5px;
+}
+
+.onlyemoji .mod {
+  background-image: url('img/levels/mod.png');
+  background-size: cover;
+  margin-bottom: -5px;
+  padding: 0px;
+}
+
+.onlyemoji .roomop {
+  background-image: url('img/levels/roomop.png');
+  background-size: cover;
+}
+
+.onlyemoji .trust {
+  background-image: url('img/levels/trust.png');
+  background-size: cover;
+  margin-bottom: -6px;
+}
+
+.onlyemoji .bot {
+  background-image: url('img/levels/bot.png');
+  background-size: cover;
+}
+
+/****************************************************/
+.chat-notice .info {
+  color: #3e9353;
+}
+
+.chat-notice .notice_font {
+  font-size: 120%;
+}
+
+.chat-notice .warn {
+  color: #fc3;
+}
+
+.chat-notice .primary {
+  color: white;
+}
+
+/****************************************************/
+
+select {
+  background: #fafafa;
+  border: 0;
+  color: #0a0a0a;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+  padding: 2px 8px;
+  width: 70%;
+  font-family: "HYWenHei 85W";
+}
+
+select:focus {
+  box-shadow: none;
+}
+
+.chatinput {
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 1024px) {
+  #sidebar {
+    border: none;
+    bottom: auto;
+    border-bottom: solid 1px transparent;
+    border-radius: 5px;
+  }
+  .cmessages{
+    padding-bottom: 10px;
+  }
+  .chatinput {
+    margin-bottom: 0px;
+  }
+
+  .sendbtn {
+    margin-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .sendbtn {
+    font-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .sendbtn {
+    font-size: 90%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .sendbtn {
+    font-size: 80%;
+  }
+}

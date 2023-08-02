@@ -1,0 +1,15 @@
+{
+    "short_name": "ZHCIM",
+    "name": "ZhangChat_IM_Client",
+    "icons": [
+        {
+            "src": "css/img/favicon.ico",
+            "sizes": "16x16",
+            "type": "image/x-icon"
+        }
+    ],
+    "start_url": "./",
+    "display": "minimal-ui",
+    "theme_color": "#a6a28c",
+    "background_color": "#00000000"
+}

@@ -1,0 +1,44 @@
+.inputchat {
+    flex: 2;
+    margin-top: 0px;
+}
+
+.btn_color {
+    background: #009688;
+}
+
+.sidebar_color {
+    background: #191919;
+}
+
+.sidebar_border_color {
+    border-left: solid 2px #191919;
+}
+
+.body_color {
+    background: #212121;
+}
+
+.prompt_color {
+    background: #212121;
+}
+
+.prompt_text_color {
+    color: white;
+}
+
+.notice_color {
+    color: white;
+}
+
+.notice_back_color {
+    background-color: #191919;
+}
+
+#sidebar-content label {
+    color: white;
+}
+
+.textinput_color {
+    color: #191919;
+}

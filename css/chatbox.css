@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'HYWenHei 85W';
   /* 字体名称 */
-  src: url("font/hk4e_zh-cn.woff") format("woff"),
-    url('https://1145.s3.bitiful.net/font/hk4e_zh-cn.woff') format('woff');
+  src:
+    url('https://1145.s3.bitiful.net/font/hk4e_zh-cn.woff') format('woff'), url("font/hk4e_zh-cn.woff") format("woff");
 
   /* 可以添加更多字体文件及其格式，以提供兼容性支持 */
 }
@@ -516,9 +516,11 @@ select:focus {
     border-bottom: solid 1px transparent;
     border-radius: 5px;
   }
-  .cmessages{
+
+  .cmessages {
     padding-bottom: 10px;
   }
+
   .chatinput {
     margin-bottom: 0px;
   }

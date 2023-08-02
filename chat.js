@@ -144,6 +144,25 @@ function setScheme(scheme) {
     $('#scheme-link').href = `css/${scheme}.css`;
     localStorageSet('scheme', scheme);
 }
+function openNewLink(link) {
+    let a = document.createElement("a");
+    a.setAttribute("href", link);
+    a.setAttribute("target", "_blank");
+    a.click();
+}
+function verifyLink(link) {
+    var linkHref = Remarkable.utils.escapeHtml(Remarkable.utils.replaceEntities(link.href));
+
+    if (linkHref !== link.innerHTML)
+        createWeuiDialog(`等一下！`, `你即将前往：${linkHref}`, (e) => {
+            console.log(e);
+            if (e)
+                openNewLink(link);
+        });
+
+
+    return false;
+}
 
 function setHighlight(scheme) {
     currentHighlight = scheme;

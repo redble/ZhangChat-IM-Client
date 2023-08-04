@@ -288,6 +288,11 @@ nav .weui-cells:before,
   width: 100%;
   box-sizing: border-box;
   max-height: 400px;
+  color: #cccccc;
+}
+
+.text_count {
+  color: #cccccc;
 }
 
 .chatflexinput {
@@ -305,6 +310,8 @@ nav .weui-cells:before,
 
 img {
   max-width: 100%;
+  min-width: 30px;
+  min-height: 10px;
 }
 
 .sendbtn {
@@ -487,6 +494,18 @@ img {
 }
 
 /****************************************************/
+
+.weui-dialog__btn:active {
+  background-color: #373737;
+}
+
+input::placeholder {
+  color: #595959;
+}
+
+.weui-input {
+  color: #cccccc;
+}
 
 select {
   background: #fafafa;

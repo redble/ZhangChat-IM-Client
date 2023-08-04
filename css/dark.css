@@ -41,4 +41,10 @@
 
 .textinput_color {
     color: #191919;
+    background: #191919;
+}
+
+.weui-icon-checked.checkbox_color {
+    color: hsla(0, 0%, 100%, .3);
+    ;
 }

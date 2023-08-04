@@ -322,170 +322,24 @@ function isMobile() {
     let flag = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     return flag;
 }
-window.onload = function () {
-    updateInputSize();
-    var init_checkboxs = [
-        {
-            id: 'pin-sidebar',
-            onchange: 'self',
-            check: true,
-            init: () => {
-                $('#sidebar').classList.add('expand');
-                $('#sidebar-content').classList.remove('hidden');
-            }
-        },
-        {
-            id: 'auto-login',
-            onchange: ['self', (e) => window.autoLogin = !!e.target.checked],
-            check: true,
-            init: () => window.autoLogin = true
-        },
-        {
-            id: 'sound-switch',
-            onchange: ['self', (e) => window.sound_sw = !!e.target.checked],
-            check: true,
-            init: () => window.sound_sw = true
-        },/*
-        {
-            id: 'notify-switch',
-            onchange: 'self',
-            check: true,
-            init: () => window.notify_sw = true
-        },*/
-        {
-            id: 'syntax-highlight',
-            onchange: ['self', (e) => markdownOptions.doHighlight = e],
-            init: (e) => markdownOptions.doHighlight = e
-        },
-        {
-            id: 'show-sendbtn',
-            onchange: (e) => {
-                let d = !!e.target.checked;
-                $('#sendbtn').style.display = d ? 'block' : 'none';
-                localStorageSet('sendbtn', d);
-            },
-            init: () => {
-                if (localStorageGet('sendbtn') == 'true') {
-                    $('#sendbtn').style.display = 'block';
-                    $('#show-sendbtn').checked = true;
-                }
-            }
-        },
-        {
-            id: 'parse-latex',
-            onchange: ['self', (e) => {
-                // console.log(e);
-                if (!!e.target.checked) {
-                    md.inline.ruler.enable(['katex']);
-                    md.block.ruler.enable(['katex']);
-                } else {
-                    md.inline.ruler.disable(['katex']);
-                    md.block.ruler.disable(['katex']);
-                }
-            }],
-            init: (e) => {
-                if (!e) {
-                    md.inline.ruler.disable(['katex']);
-                    md.block.ruler.disable(['katex']);
-                } else
-                    window.latex_sw = true
-            }
-        },
-        {
-            id: 'joined-left',
-            onchange: ['self', (e) => window.join_sw = !!e.target.checked],
-            check: true,
-            init: () => window.join_sw = true
-        },
-        {
-            id: 'show-head',
-            onchange: ['self', (e) => window.head_sw = !!e.target.checked],
-            check: true,
-            init: () => window.head_sw = true
-        },
-        {
-            id: 'allow-imgur',
-            onchange: ['self', (e) => window.img_sw = !!e.target.checked],
-            check: true,
-            init: () => window.img_sw = true
-        },
-        {
-            id: 'fun-system',
-            onchange: ['self', (e) => window.funsys_sw = !!e.target.checked],
-            check: true,
-            init: () => window.funsys_sw = true
-        },
-        {
-            id: 'rainbow-nick',
-            onchange: ['self', (e) => window.rainbow_sw = !!e.target.checked],
-            check: true,
-            init: () => window.rainbow_sw = true
-        },
-        {
-            id: 'allow-html',
-            onchange: ['self', (e) => window.html_sw = !!e.target.checked],
-            check: true,
-            init: () => window.html_sw = true
-        },
-        {
-            id: 'allow-audio',
-            onchange: ['self', (e) => window.audio_sw = !!e.target.checked],
-            init: () => window.audio_sw = true
-        }
-    ];
-    init_checkboxs.forEach(e => {
-        let res = localStorageGet(e.id) == 'true';
-        //console.log(e.id);
-        // console.log(res);
+function setPageWidth(j) {
+    $('#main_container').style.maxWidth = j;
+}
+function updatePageWidth() {
+    // console.log('update page width');
+    if (!$('#pin-sidebar').checked && document.body.clientWidth >= 600) {
+        setPageWidth(document.body.clientWidth - 100 + 'px');
+        // console.log('width big 600px and no pin sidebar');
+        return;
+    } else setPageWidth('600px');
+    let w = document.body.clientWidth - 530;
+    if (w > 600) {
+        //  console.log('width big then 600px');
+        setPageWidth(w + 'px');
+    } else setPageWidth('600px');
+}
 
-        $('#' + e.id).checked = res;
-        if (typeof e.init == 'function') {
-            if (e.check != undefined) {
-                if (typeof e.check == 'boolean' && e.check == res)
-                    e.init();
-                if (typeof e.check == 'function' && e.check())
-                    e.init();
-            }
-            else e.init(res);
-        }
-        if (e.onchange == 'self') {
-            $('#' + e.id).onchange = (j) => {
-                localStorageSet(e.id, !!j.target.checked);
-                // console.log('onchage');
-            }
-        } else if (e.onchange.constructor == Array && e.onchange[0] == 'self') {
-            $('#' + e.id).onchange = (j) => {
-                localStorageSet(e.id, !!j.target.checked);
-                e.onchange[1](j);
-            }
-        }
-        else $('#' + e.id).onchange = e.onchange;
-    });
-    if (localStorageGet('init') != 'true') {
-        localStorageSet('init', 'true');
-        var default_opens = [
-            'joined-left',
-            'parse-latex',
-            'syntax-highlight',
-            'show-head',
-            'allow-imgur',
-            'fun-system'
-        ];
-        if (isMobile()) {
-            default_opens.push('show-sendbtn');
-        }
-        default_opens.forEach(e => {
-            let t = $('#' + e);
-            t.checked = true;
-            t.onchange({
-                id: e, target: {
-                    checked: true
-                }
-            })
-        })
-    }
-};
-
+window.onresize = updatePageWidth;
 //-------------------------------------------------
 if (localStorageGet('highlight')) {
     setHighlight(localStorageGet('highlight'));
@@ -842,6 +696,7 @@ $('#sidebar').onmouseenter = $('#sidebar').ontouchstart = function (e) {
     $('#sidebar-content').classList.remove('hidden');
     $('#sidebar').classList.add('expand');
     e.stopPropagation();
+    updatePageWidth();
 }
 
 $('#sidebar').onmouseleave = document.ontouchstart = function (event) {
@@ -858,7 +713,8 @@ $('#sidebar').onmouseleave = document.ontouchstart = function (event) {
     if (!$('#pin-sidebar').checked) {
         $('#sidebar-content').classList.add('hidden');
         $('#sidebar').classList.remove('expand');
-    }
+    } else
+        updatePageWidth();
 }
 
 function updateInputSize() {
@@ -886,7 +742,7 @@ $('#sendbtn').onclick = function () {
         var text = e.value;
         e.value = '';
         send({ cmd: 'chat', text: text, head: localStorageGet('head') || '' });
-
+        updateCount({ target: e });
         lastSent[0] = text;
         lastSent.unshift("");
         lastSentPos = 0;
@@ -900,6 +756,7 @@ $('#chatinput').onkeydown = function (e) {
         if (!wsConnect)
             join(myChannel);
         // 发送消息
+
         if (!!e.target.value) {
             var text = e.target.value;
             e.target.value = '';
@@ -1037,7 +894,172 @@ function userAdd(nick, trip) {
     $('#users').appendChild(userLi);
     onlineUsers.push(nick);
 }
+//----------------------------------------------------------------------------------------
+window.onload = function () {
+    updatePageWidth();
+}
+updateInputSize();
+var init_checkboxs = [
+    {
+        id: 'pin-sidebar',
+        onchange: ['self', () => updatePageWidth()],
+        check: true,
+        init: () => {
+            $('#sidebar').classList.add('expand');
+            $('#sidebar-content').classList.remove('hidden');
+        }
+    },
+    {
+        id: 'auto-login',
+        onchange: ['self', (e) => window.autoLogin = !!e.target.checked],
+        check: true,
+        init: () => window.autoLogin = true
+    },
+    {
+        id: 'sound-switch',
+        onchange: ['self', (e) => window.sound_sw = !!e.target.checked],
+        check: true,
+        init: () => window.sound_sw = true
+    },/*
+    {
+        id: 'notify-switch',
+        onchange: 'self',
+        check: true,
+        init: () => window.notify_sw = true
+    },*/
+    {
+        id: 'syntax-highlight',
+        onchange: ['self', (e) => markdownOptions.doHighlight = e],
+        init: (e) => markdownOptions.doHighlight = e
+    },
+    {
+        id: 'show-sendbtn',
+        onchange: (e) => {
+            let d = !!e.target.checked;
+            $('#sendbtn').style.display = d ? 'block' : 'none';
+            localStorageSet('sendbtn', d);
+        },
+        init: () => {
+            if (localStorageGet('sendbtn') == 'true') {
+                $('#sendbtn').style.display = 'block';
+                $('#show-sendbtn').checked = true;
+            }
+        }
+    },
+    {
+        id: 'parse-latex',
+        onchange: ['self', (e) => {
+            // console.log(e);
+            if (!!e.target.checked) {
+                md.inline.ruler.enable(['katex']);
+                md.block.ruler.enable(['katex']);
+            } else {
+                md.inline.ruler.disable(['katex']);
+                md.block.ruler.disable(['katex']);
+            }
+        }],
+        init: (e) => {
+            if (!e) {
+                md.inline.ruler.disable(['katex']);
+                md.block.ruler.disable(['katex']);
+            } else
+                window.latex_sw = true
+        }
+    },
+    {
+        id: 'joined-left',
+        onchange: ['self', (e) => window.join_sw = !!e.target.checked],
+        check: true,
+        init: () => window.join_sw = true
+    },
+    {
+        id: 'show-head',
+        onchange: ['self', (e) => window.head_sw = !!e.target.checked],
+        check: true,
+        init: () => window.head_sw = true
+    },
+    {
+        id: 'allow-imgur',
+        onchange: ['self', (e) => window.img_sw = !!e.target.checked],
+        check: true,
+        init: () => window.img_sw = true
+    },
+    {
+        id: 'fun-system',
+        onchange: ['self', (e) => window.funsys_sw = !!e.target.checked],
+        check: true,
+        init: () => window.funsys_sw = true
+    },
+    {
+        id: 'rainbow-nick',
+        onchange: ['self', (e) => window.rainbow_sw = !!e.target.checked],
+        check: true,
+        init: () => window.rainbow_sw = true
+    },
+    {
+        id: 'allow-html',
+        onchange: ['self', (e) => window.html_sw = !!e.target.checked],
+        check: true,
+        init: () => window.html_sw = true
+    },
+    {
+        id: 'allow-audio',
+        onchange: ['self', (e) => window.audio_sw = !!e.target.checked],
+        init: () => window.audio_sw = true
+    }
+];
+init_checkboxs.forEach(e => {
+    let res = localStorageGet(e.id) == 'true';
+    //console.log(e.id);
+    // console.log(res);
 
+    $('#' + e.id).checked = res;
+    if (typeof e.init == 'function') {
+        if (e.check != undefined) {
+            if (typeof e.check == 'boolean' && e.check == res)
+                e.init();
+            if (typeof e.check == 'function' && e.check())
+                e.init();
+        }
+        else e.init(res);
+    }
+    if (e.onchange == 'self') {
+        $('#' + e.id).onchange = (j) => {
+            localStorageSet(e.id, !!j.target.checked);
+            // console.log('onchage');
+        }
+    } else if (e.onchange.constructor == Array && e.onchange[0] == 'self') {
+        $('#' + e.id).onchange = (j) => {
+            localStorageSet(e.id, !!j.target.checked);
+            e.onchange[1](j);
+        }
+    }
+    else $('#' + e.id).onchange = e.onchange;
+});
+if (localStorageGet('init') != 'true') {
+    localStorageSet('init', 'true');
+    var default_opens = [
+        'joined-left',
+        'parse-latex',
+        'syntax-highlight',
+        'show-head',
+        'allow-imgur',
+        'fun-system'
+    ];
+    if (isMobile()) {
+        default_opens.push('show-sendbtn');
+    }
+    default_opens.forEach(e => {
+        let t = $('#' + e);
+        t.checked = true;
+        t.onchange({
+            id: e, target: {
+                checked: true
+            }
+        })
+    })
+}
+//--------------------------------------------------------------------------------------------------------------
 function userRemove(nick) {
     var users = $('#users');
     var children = users.children;
@@ -1282,7 +1304,7 @@ function pushMessage(me, head, nick, trip, text, _level, style, color = '#ffffff
     const emojiDiv = document.createElement('span');
     emojiDiv.className = style;
     temp_span.push(spanNick);
-    if (trip != undefined) temp_span.push(tripSpan);
+    if (trip != undefined && trip != '') temp_span.push(tripSpan);
     //temp_add.push(nickTrip_span);
     (me ? temp_span : temp_span.reverse()).forEach(e => nickTrip_span.appendChild(e));
     (me ? temp_add : temp_add.reverse()).forEach((i) => emojiDiv.appendChild(i))
@@ -1303,6 +1325,7 @@ function pushMessage(me, head, nick, trip, text, _level, style, color = '#ffffff
     chatSender.appendChild(imgDiv);
     chatSender.appendChild(handleDiv);
     var atBottom = isAtBottom();
+    console.log('pushmessage','isAtBottom',atBottom);
     $("#messages").appendChild(chatSender);
     if (atBottom) {
         window.scrollTo(0, document.body.scrollHeight);
@@ -1359,8 +1382,11 @@ function pushWelcomeButton(str) {
         send({ cmd: 'chat', text: txt, head: localStorageGet('head') || '' })
     }
     centerDiv.appendChild(button);
+    var atBottom = isAtBottom();
     $('#messages').appendChild(centerDiv);
-    toBottom();
+    if (atBottom) {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
 }
 function pushInfoColor(text, color) {
     const chatNotice = document.createElement("div");

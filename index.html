@@ -25,7 +25,7 @@
 
 <body class="body_color" style="margin-bottom: 80px;">
   
-  <article class="container">
+  <article id="main_container" class="container">
     <div id="messages" class="cmessages">
      
     </div>
@@ -34,10 +34,10 @@
     <div class="container">
       <div class="chatflexinput">
         <div class="weui-cells weui-cells_form chatinput inputchat textinput_color">
-          <div class="weui-cell weui-cell_active">
+          <div class="weui-cell">
             <div class="weui-cell__bd flex2">
               <textarea class="weui-textarea" placeholder="输入文本" rows="3" id="chatinput"></textarea>
-              <div role="option" aria-live="polite" class="weui-textarea-counter"><span id="text_count">0</span>/7000</div>
+              <div role="option" aria-live="polite" class="weui-textarea-counter text_count"><span id="text_count">0</span>/7000</div>
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="auto-login">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="auto-login">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">自动登录</div>
         </label>
@@ -61,7 +61,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="pin-sidebar">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="pin-sidebar">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">固定侧边栏</div>
         </label>
@@ -69,7 +69,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="sound-switch">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="sound-switch">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">声音提醒</div>
         </label>
@@ -77,7 +77,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="notify-switch">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="notify-switch">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">桌面通知</div>
         </label>
@@ -85,7 +85,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="parse-latex" >
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="parse-latex" >
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">启用数学公式</div>
         </label>
@@ -93,7 +93,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="syntax-highlight">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="syntax-highlight">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">代码高亮</div>
         </label>
@@ -101,7 +101,7 @@
          <label class="weui-cell weui-cell_active weui-check__label" for="show-sendbtn">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="show-sendbtn">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">显示发送按钮</div>
         </label>
@@ -113,7 +113,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="joined-left">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="joined-left">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">显示 加入/离开</div>
         </label>
@@ -121,7 +121,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="show-head">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="show-head">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">显示头像</div>
         </label>
@@ -129,7 +129,7 @@
         <label class="weui-cell weui-cell_active weui-check__label" for="allow-imgur">
           <div class="weui-cell__hd">
             <input type="checkbox" class="weui-check "  id="allow-imgur">
-            <i class="weui-icon-checked"></i>
+            <i class="weui-icon-checked checkbox_color"></i>
           </div>
           <div class="weui-cell__bd">显示图片</div>
         </label>
@@ -141,7 +141,7 @@
           <label class="weui-cell weui-cell_active weui-check__label" for="fun-system">
             <div class="weui-cell__hd">
               <input type="checkbox" class="weui-check "  id="fun-system">
-              <i class="weui-icon-checked"></i>
+              <i class="weui-icon-checked checkbox_color"></i>
             </div>
             <div class="weui-cell__bd">有趣的系统</div>
           </label>
@@ -149,7 +149,7 @@
           <label class="weui-cell weui-cell_active weui-check__label" for="rainbow-nick">
             <div class="weui-cell__hd">
               <input type="checkbox" class="weui-check "  id="rainbow-nick">
-              <i class="weui-icon-checked"></i>
+              <i class="weui-icon-checked checkbox_color"></i>
             </div>
             <div class="weui-cell__bd">彩虹昵称</div>
           </label>
@@ -157,7 +157,7 @@
           <label class="weui-cell weui-cell_active weui-check__label" for="allow-html">
             <div class="weui-cell__hd">
               <input type="checkbox" class="weui-check "  id="allow-html">
-              <i class="weui-icon-checked"></i>
+              <i class="weui-icon-checked checkbox_color"></i>
             </div>
             <div class="weui-cell__bd">显示HTML信息</div>
           </label>
@@ -165,7 +165,7 @@
           <label class="weui-cell weui-cell_active weui-check__label" for="allow-audio">
             <div class="weui-cell__hd">
               <input type="checkbox" class="weui-check "  id="allow-audio">
-              <i class="weui-icon-checked"></i>
+              <i class="weui-icon-checked checkbox_color"></i>
             </div>
             <div class="weui-cell__bd">显示音频信息</div>
           </label>

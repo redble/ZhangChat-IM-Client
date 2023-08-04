@@ -164,3 +164,6 @@ b {
 video {
 	height: 400px;
 }
+textarea::placeholder {
+    color: #595959;
+}

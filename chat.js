@@ -1325,7 +1325,7 @@ function pushMessage(me, head, nick, trip, text, _level, style, color = '#ffffff
     chatSender.appendChild(imgDiv);
     chatSender.appendChild(handleDiv);
     var atBottom = isAtBottom();
-    console.log('pushmessage','isAtBottom',atBottom);
+   // console.log('pushmessage','isAtBottom',atBottom);
     $("#messages").appendChild(chatSender);
     if (atBottom) {
         window.scrollTo(0, document.body.scrollHeight);
@@ -1377,7 +1377,7 @@ function pushWelcomeButton(str) {
     button.className = 'weui-btn weui-btn_mini weui-wa-hotarea welcome_btn';
     button.textContent = str;
     button.onclick = function () {
-        const welcomes = ['hi y' + 'o'.repeat(Math.round(Math.random() * 20)), 'hihi', 'uwu!', '哇，真的是你啊', 'awa!', '来了老弟~']
+        const welcomes = ['hi y' + 'o'.repeat(Math.round(Math.random() * 20)), 'uwu!', '哇，真的是你啊', 'awa!', '来了老弟~']
         var txt = welcomes[Math.round(Math.random() * (welcomes.length - 1))]
         send({ cmd: 'chat', text: txt, head: localStorageGet('head') || '' })
     }

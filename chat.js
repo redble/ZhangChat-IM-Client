@@ -317,6 +317,7 @@ var imgHostWhitelist = [ // 这些是由小张添加的
     'api.remelens.link',    // HelloOsMe's API (another domain
     'pic.imgdb.cn',    // 聚合图床
     'blog.mrzhang365.cf',    // MrZhang365's blog
+    't00img.yangkeduo.com' //拼多多图床
 ];
 function isMobile() {
     let flag = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -1237,6 +1238,9 @@ function pushHtml(html) {
 function pushMessage(me, head, nick, trip, text, _level, style, color = '#ffffff', html = false) {
 
     const chatSender = document.createElement("div");
+    if (_level.id) {
+        chatSender.id = '_' + _level.id;
+    }
     let level = getChatLevel(_level);
     let temp_add = [];
     chatSender.className = !me ? "chat-sender" : "chat-receiver";
@@ -1325,7 +1329,7 @@ function pushMessage(me, head, nick, trip, text, _level, style, color = '#ffffff
     chatSender.appendChild(imgDiv);
     chatSender.appendChild(handleDiv);
     var atBottom = isAtBottom();
-   // console.log('pushmessage','isAtBottom',atBottom);
+    // console.log('pushmessage','isAtBottom',atBottom);
     $("#messages").appendChild(chatSender);
     if (atBottom) {
         window.scrollTo(0, document.body.scrollHeight);
@@ -1787,6 +1791,27 @@ var COMMANDS = {
         pushWarn('当前频道认为你不是人，所以请先完成下面的人机验证：')
         pushCaptcha(args.sitekey)
     },
+    delmsg: e => {
+        let div = $('#_' + e.id);
+        let nick = div.querySelector('.mynick').textContent;
+        let text = `${nick} 撤回了一条消息`;
+        div.innerHTML = '';
+        div.className = "chat-notice";
+        const spanNotice = document.createElement("span");
+        spanNotice.classList.add("notice_back_color");
+        // spanNotice.classList.add("notice_font");
+        spanNotice.classList.add('info');
+        spanNotice.innerHTML = md.render(text);
+        spanNotice.oncontextmenu = function (e) {
+            e.preventDefault();
+            var replyText = buildReplyText({ nick: '*', trip: '' }, text)
+            replyText += $('#chatinput').value;
+            $('#chatinput').value = '';
+            insertAtCursor(replyText);
+            $('#chatinput').focus();
+        }
+        div.appendChild(spanNotice);
+    }
 }
 /***********************************************************************************/
 if (!myChannel) {

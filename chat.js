@@ -20,7 +20,7 @@ function localStorageSet(key, val) {
 //--------------------vars -----------------------
 var frontpage = [
     '# [小张聊天室](https://chat.zhangsoft.link) - IM模式客户端',
-    'Powered by [Dr0](https://github.com/redble)',
+    'Powered by [Dr0](https://githubfast.com/redble)',
     '---',
     '欢迎来到小张聊天室，这是一个黑客风格的聊天室。',
     '注意：在这里，我们把"房间（chatroom）"称作"频道（channel）"。',
@@ -34,8 +34,8 @@ var frontpage = [
     '---',
     '您知道吗？这个聊天室原本是[MelonFish](https://gitee.com/XChatFish)交给[MrZhang365](https://blog.mrzhang365.cf)开发的XChat聊天室。',
     '但是由于某些原因，它被开发者魔改成了现在的小张聊天室。',
-    'XChat基于HackChat，HackChat的GitHub仓库地址为：\nhttps://github.com/hack-chat/main',
-    '小张聊天室的仓库地址为：https://github.com/ZhangChat-Dev-Group/ZhangChat',
+    'XChat基于HackChat，HackChat的GitHub仓库地址为：\nhttps://githubfast.com/hack-chat/main',
+    '小张聊天室的仓库地址为：https://githubfast.com/ZhangChat-Dev-Group/ZhangChat',
     '在此对HackChat的开发者深表感谢。',
     '---',
     '本聊天室开发者：',
@@ -43,8 +43,8 @@ var frontpage = [
     '@paperee - [纸片君ee的个人主页](https://paperee.guru/)',
     '---',
     '更多代码贡献者：',
-    '@[4n0n4me](http://github.com/xjzh123/) - 编写了[hackchat\\+\\+客户端](https://hc.thz.cool/)',
-    '@[Dr0](https://github.com/redble) - 编写了[ZhangChat增强脚本](https://greasyfork.org/zh-CN/scripts/458989-zhchat%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC)',
+    '@[4n0n4me](http://githubfast.com/xjzh123/) - 编写了[hackchat\\+\\+客户端](https://hc.thz.cool/)',
+    '@[Dr0](https://githubfast.com/redble) - 编写了[ZhangChat增强脚本](https://greasyfork.org/zh-CN/scripts/458989-zhchat%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC)',
     '---',
     '友情链接：',
     '[HackChat聊天室](https://hack.chat/)',
@@ -52,7 +52,7 @@ var frontpage = [
     '[TanChat聊天室](https://tanchat.fun/)',
     '[ZhangChat增强脚本](https://greasyfork.org/zh-CN/scripts/458989-zhchat%E5%A2%9E%E5%BC%BA%E8%84%9A%E6%9C%AC)',
     '---',
-    '2023.02.23~2023.03.26 [小张聊天室开发组](https://github.com/ZhangChat-Dev-Group) 致',
+    '2023.02.23~2023.03.26 [小张聊天室开发组](https://githubfast.com/ZhangChat-Dev-Group) 致',
     '**本站由[雨云](https://www.rainyun.com/MjcxMTc=_)提供计算服务**',
 ].join("\n");
 function initFrontpage() {
@@ -302,7 +302,7 @@ var text_count = $('#text_count');
 var allowImages = true;
 var imgHostWhitelist = [ // 这些是由小张添加的
     'i.loli.net', 's2.loli.net', // SM-MS图床
-    's1.ax1x.com', 's2.ax1x.com', 'z3.ax1x.com', 's4.ax1x.com', // 路过图床
+    's1.ax1x.com', 's2.ax1x.com', 'z3.ax1x.com', 's4.ax1x.com', 'z1.ax1x.com', // 路过图床
     'i.postimg.cc', 'gimg2.baidu.com', // Postimages图床 百度
     'files.catbox.moe', 'img.thz.cool', 'img.liyuv.top', 'share.lyka.pro', // 这些是ee加的（被打
     document.domain,    // 允许我自己
